@@ -1,0 +1,220 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<style>
+    #local
+    {
+visibility:hidden;
+    }
+
+</style>
+
+</head>
+<body>
+
+<div class="container" style="border:2px solid yellow;background-color:grey;margin-top:60px;" >
+
+    <h2 style="font-size:60px;text-align:center">Shopping Cart</h2>
+</div>
+
+<!--display cart item in  id="cartpr{{k.product_uid}}"-->
+<div class="container" style="border:2px solid blue;background-color:lightgrey;">
+
+    <table class="table" style="">
+
+<tbody>
+
+       {% for i in allprod %}
+      {% for j in i %}
+             {% for k in j %}
+      <tr>
+       <td><h1 id="capr{{k.product_uid}}"></h1></td>
+       <td> <h1 id="cartpr{{k.product_uid}}" ></h1></td>
+       </tr>
+        {% endfor %}
+   {% endfor %}
+    {% endfor %}
+
+
+   </tbody>
+        <tr><td colspan="2"><h3>Your Total Cost of all Item  $<span id="cost" style="color:red;"></span></h3></td></tr>
+        <tr><tbody><tr><td><button class="btn btn-danger"> <a href="gold" class="btn btn-danger">Add Item</a></button> </td><td><button class="btn btn-success"> <a class="btn btn-success">Make Payment</a></button></td></tr></tbody></tr>
+
+    </table>
+
+</div>
+
+
+
+
+<!--logic for final cart items _
+
+ <tbody>
+    <tr><td rowspan="5"><img src="{%static 'images/3c.jpg'%}" alt="cart" style="width:300;height:400;text-align:left;"> </td><td><h1>Name:- {{k.product_name}}<h2  ></h2></h1></td></tr>
+    <tr><td><h1>UID :-Product_id</h1></td></tr>
+    <tr><td>
+        <table class="table table-borderless">
+            <tbody><tr><td><h2>Quantity </h2><input type="number" name="quantity"> </td><td><h2>Price $</h2></h></td></tr></tbody>
+        </table>
+
+    </td></tr>
+
+    <tr><td><table class="table table-borderless">
+            <tbody><tr><td><button class="btn btn-danger"> <a class="btn btn-danger">Add Item</a></button> </td><td><button class="btn btn-success"> <a class="btn btn-success">Make Payment</a></button></td></tr></tbody>
+        </table>
+    </td></tr>
+    </tbody>
+
+
+-->
+
+
+<!--cateigoreis-->
+{% for j in allprod %}
+       {% for i in j %}
+
+       <div style="margin-top:150px;" id="local">
+   <div class="container-fluid" name="Phones" id="phone" style="border:0px solid black;">
+       <div class="table-responsive">
+       <table class="table table-striped bg-light">
+           <tbody>
+           <tr>
+          {% for k in i %}
+
+
+             <th>
+                     <div class="product">
+
+                         <table class="table">
+                       <tbody>
+                       <tr>
+                           <th>
+                       <h1 id="namepr{{k.product_uid}}">{{k.product_name}}</h1>
+                           </th>
+                       </tr>
+                       <tr>
+                           <td >
+                 <h2>{{k.product_cat}}</h2><span>{{k.product_subcat}}</span>
+                               <span style="margin-left:100px;">Id- #{{k.product_uid}}</span>
+                           </td>
+                       </tr>
+
+                       <tr>
+                           <td>
+                               <h2 id="imgpr{{k.product_uid}}" ><img src="{{k.product_img.url}}" style="width:200px;height:300px;" ></h2>
+                           </td>
+                       </tr>
+                       <tr>
+                           <td>{{k.product_desc}}</td>
+                       </tr>
+                       <tr>
+                           <td><h2>Product Price</h2><h3 id="pricepr{{k.product_uid}}"> {{k.product_price}}</h3></td>
+                       </tr>
+
+
+
+                       </tbody>
+                   </table>
+
+                     </div>
+
+             </th>
+
+
+
+{% endfor %}
+           </tr>
+           </tbody>
+           </table>
+  </div>
+</div>
+       </div>
+  {% endfor %}
+       {% endfor %}
+</div>
+
+
+<!--end cateigories-->
+
+
+
+
+{% block js %}
+<script>
+
+
+console.log('working');
+cart=JSON.parse(localStorage.getItem('cart'));
+//console.log(cart);
+var stotal=updateCart(cart);
+//console.log(stotal);   </h1><h5>'+res+'</h5> <h4>$'+price+'</h4> <h5>Qty: '+cart[obj]+'</h5>
+document.getElementById('cost').innerHTML=stotal;
+
+updateImg(cart);
+
+function updateImg(cart)
+{
+for(var item in cart)
+{
+console.log(document.getElementById('img'+item));
+var b=document.getElementById('img'+item);
+var c=document.getElementById('ca'+item);
+console.log(c);
+c.appendChild(b);
+}
+
+}
+
+
+
+function updateCart(cart)
+{
+var i=1;
+var total=0;
+for(var obj in cart)
+{
+
+var name=document.getElementById('name'+obj).innerHTML;
+var price=document.getElementById('price'+obj).innerHTML;
+
+//console.log(name);
+var res=obj.slice(2);
+
+var str='<h1 id="cart'+obj+' ">'+name+'</h1> </h5> <h4>One Item Price $'+price+'</h4> <h5>Qty: '+cart[obj]+'</h5>';
+
+//logic for price
+var add=sum(cart,obj,price);
+//console.log(add);
+str=str+"<h4>Now Product Cost: $"+add+"</h4><br><br>";
+document.getElementById('cart'+obj).innerHTML=str;
+total=total+add;
+i=i+1;
+
+}
+//return Final result for after calculating all Item cost
+//console.log(total);
+return total;
+}
+function sum(cart,obj,price)
+{
+//console.log(cart);
+var sum=0;
+var Qty=parseInt(cart[obj]);
+var sprice=parseInt(price);
+sum=sum+Qty*sprice;
+//console.log(sum);
+
+return sum;
+}
+
+</script>
+{% endblock %}
+
+</h1></body>
+</html>

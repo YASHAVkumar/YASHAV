@@ -1,0 +1,157 @@
+{%load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Traders Search in Page</title>
+        <script src="https://kit.fontawesome.com/53a86ae002.js" crossorigin="anonymous"></script>
+
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'css\login.css'%}">
+</head>
+<body>
+<!--
+{% for obj in row %}
+<h5>{{obj.product_uid}}</h5>
+<img src="{{obj.product_img.url}}" style="width:140;height:170;">
+<h4>{{obj.product_name}}</h4>
+<h4>{{obj.product_price}}</h4>
+<h4>{{obj.product_desc}}</h4>
+<h4>{{obj.product_price}}</h4>
+<hr>
+{% endfor %}
+
+-->
+<style>
+.search{
+    margin-top:2px;
+    border:2px solid black;
+}
+</style>
+
+<nav class="navbar navbar-inverse navbar-expand-sm" id="top" style="height:130px;color:white">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+ <a class="navbar-brand" href=""><h1 style="font-size:70px;margin-top:-20px">Traders.com</h1> </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav" style="margin-top:65px;margin-left:-300px;font-size:30px;">
+          <li ><a href="/">Home</a></li>
+
+       </ul>
+      <ul class="nav navbar-nav navbar-right" style="marign-top:40px;font-size:40px;">
+        <li > <div class="btn-group"> <form class="form-inline" action="search" method="GET">
+    <input class=" btn group-item btn-lg form-control mr-sm-2 bt-outline-success" type="text" placeholder="Search" name="text" style="width:450px;" >
+    <button class="btn group-item btn-success" type="submit" name="submit" style="width:150px;">Search</button>
+        </form>
+        </div>
+        </li>
+
+          <script>
+              $(document).ready(function()
+              {
+              $("#login").click(function()
+              {
+              $("#login").hide();
+              });
+              });
+
+              $(document).ready(function()
+              {
+              $("#cross").click(function()
+              {
+              $("#list").hide();
+              });
+              });
+
+
+          </script>
+
+
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+
+<!---interface-->
+<style>
+    .left
+    {
+    border:2px solid black;
+ margin:4px;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2">
+
+            <div>
+                <h1 class="glow" >Search From </h1>
+                <h1 class="glow" style="font-size:50px;">Traders Shopping Store</h1>
+
+            </div>
+        </div>
+        <div class="col-sm-8 bg-light">
+             <div class="container  p-3 my-3 bg-dark" >
+                 <h1 style="font-size:50px;">Here it  is something in our Database  related to Your search</h1>
+                 <br><br><br>
+              <table class="table">
+
+                  <tbody>
+
+                  {% for obj in row %}
+                  <tr><td  colspan="2">
+                      <h3 style="text-align:center;font-size:50px;">{{obj.product_name}}</h3></td></tr>
+
+                     <tr>
+                      <td><img src="{{obj.product_img.url}}" style="width:240;height:300;"></td>
+                      <td>
+                          <table class="table">
+                              <tbody >
+                              <tr><td><h4 style="font-size:30px;">Product Id {{obj.product_uid}}</h4></td></tr>
+                              <tr><td><h4 style="font-size:30px;">Product Features {{obj.product_desc}}</h4></td></tr>
+                              <tr><td><h4 style="font-size:30px;">Price ${{obj.product_price}}</h4></td></tr>
+
+                              </tbody>
+                          </table>
+
+                      </td></tr>
+                  <tr><td><br><br><br><br><br></td></tr>
+      {% endfor %}
+
+
+                  </tbody>
+
+              </table>
+                 <br><br><br>
+
+
+             </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="left" >
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+</body>
+
+</html>

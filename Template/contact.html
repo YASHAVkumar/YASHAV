@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <script src="https://kit.fontawesome.com/53a86ae002.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'css\login.css'%}">
+    <link rel="stylesheet" type="text/css" href="{%static 'css\style.css'%}">
+    <link rel="stylesheet" type="text/css" href="{%static 'css\destinations.css'%}">
+    <link rel="stylesheet" type="text/css" href="{%static 'css\destinations_responsive.css'%}">
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body bgcolor="blue">
+
+<div class="container">
+    <div class="container">
+<div class="container">
+    <div class="container">
+
+    <div class="container-fulid">
+
+<div class="main" style="background-color:black;color:white">
+        <div class="main " style="text-align:center;">
+
+
+            <h1>Hi user</h1>
+            <h3>Our organisation is currently not working. </h3>
+            <h5>
+               Give your Valuable Feedback to us
+            </h5>
+                 <form action="contact" method="get">
+                     <textarea style="width:40%"   name="feedback">
+
+                     </textarea>
+                     <input type="submit" class="btn btn-sm btn-light rounded" onclick="func()">
+                     <script>
+                         function func()
+                         {
+                         alert("are you sure");
+                         }
+                     </script>
+                 </form>
+        </div>
+        <div class="btn-group"> <a class="btn btn-success btn-outline-primary mx-5 d-block" href="/" > Home</a>
+           </div>
+    </div>
+    </div>
+</div>
+
+    </div>
+</div>
+</div>
+
+
+
+</body>
+</html>

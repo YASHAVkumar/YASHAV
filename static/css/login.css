@@ -1,0 +1,80 @@
+body
+{
+background-image:url("{%static 'images/contri.jpeg' %}")
+}
+.suggest
+{
+border:1px solid blue;
+margin-top:15px;
+}
+.main
+{
+border:2px solid black;
+margin:5px;
+}
+#klol
+{
+margin-left:80px;
+font-size:50;
+color:white;
+text-shadow:2px  2px black;
+}
+.container1
+{
+border:2px solid black;
+height:700px;
+width:400px;
+
+}
+button
+{
+border-radius:7px;
+color:blue;
+}
+.access_list
+{
+position:absolute;
+}
+
+        .glow {
+  font-size: 80px;
+  color: #fff;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
+
+.trend
+{
+display:block;
+background-color:white;
+}
+.trend2
+{
+background-color:white;
+border:2px solid black;
+}
+.back
+{
+
+
+}
+.ref
+{
+border:2 px solid black;
+background-color:black;
+
+}
+
+

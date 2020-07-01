@@ -1,0 +1,58 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Traders Sign_up</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'css\login.css'%}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{% static 'js/sign.js'%}"></script>
+
+</head>
+<body>
+<div class="container">
+    <div class="container-fluid mx-8 d-block">
+        <div class="main  mx-9">
+
+            <form action="login" method="post" onsubmit="func()" >
+{% csrf_token %}
+
+
+                <table class="table table-dark table-lg table-hover">
+                    <thead>
+                    <tr>
+                        <th><h1>Create Your Account</h1></th>
+                    </tr></thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            First Name <input  type="text" name="fname" class="btn btn-outline-light" id="fname"></td>
+                        <td>Last Name <input  type="text" name="lname" class="btn btn-outline-light"></td></tr>
+                    <tr><td>
+                        Username <input  type="text" name="uname" class="btn btn-outline-light"></td>
+                    <td>
+                        Email <input type="email" name="email" class="btn btn-outline-info"></td></tr>
+                    <tr>
+                        <td>
+                            Password <input type="password" name="pas" class="btn btn-outline-light"></td>
+
+                       <td>Re-Enter  <input type="password" name="pas1" class="btn btn-outline-light"><span>{{var}}</span></td></tr>
+                    <tr>
+                    <td>Contact <input type="number" name="phone" class="btn btn-outline-light"></td></tr>
+                <tr><td colspan="2">
+                    Address <textarea name="add" class="btn btn-outline-light" style="width:500px;height:200px;"> </textarea></td>></tr>
+                    <tr ><td colspan="2">
+                        <input type="submit" value="Create Your Traders Account" class="btn btn-success btn-outline-pimary" style="float:right;text-align:center" name="submit">
+                    </td></tr>
+                    </tbody></table> </form>
+        </div></div></div>
+
+
+</body>
+
+<!--||value.l==""||value.u==""||value.em==""||value.pass==""||value.cpass==""||value.ph==""||value.address==""-->
+</html>

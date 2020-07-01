@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "images" as img %}
+
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+<title> Traders</title>
+    <script src="https://kit.fontawesome.com/53a86ae002.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'css\login.css'%}">
+    <link rel="stylesheet" type="text/css" href="{%static 'css\style.css'%}">
+    <link rel="stylesheet" type="text/css" href="{%static 'css\destinations.css'%}">
+    <link rel="stylesheet" type="text/css" href="{%static 'css\destinations_responsive.css'%}">
+
+
+     <link rel="stylesheet" type="text/css" href="{% static 'css\index.css'%}">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script>
+    $(document).ready(function()
+    {
+    $("#list").hide();
+    $("#navigate").click(function()
+    {
+    $("#list").toggle();
+    });
+
+ $("#cross").click(function()
+    {
+    $("#list").toggle();
+    });
+    });
+</script>
+
+
+</head>
+<header >
+
+
+<nav class="navbar navbar-inverse navbar-expand-sm" id="top" style="height:130px;color:white">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+ <a class="navbar-brand" href=""><h1 style="font-size:70px;margin-top:-20px">Traders.com</h1> </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav" style="margin-top:65px;margin-left:-300px;font-size:25px;">
+          <li class="active"> <a id="navigate"><i class="fas fa-bars" style="margin:4px"></i></a></li>
+          <li ><a href="">Home</a></li>
+       
+        <li><a href="contact">Contact</a></li>
+             <li><a href='#' class='clear' id='clear1' >Clear Cart</a></li>
+
+ </ul>
+        <table class="nav navbar-nav navbar-right " cellpadding="30px">
+          <tbody>
+          <tr>
+              <th>
+                  <div class="btn-group">
+                      <form class="form-inline" action="search" method="GET">
+                          <input class=" btn group-item btn-lg form-control mr-sm-2 bt-outline-success" type="text" placeholder="Search" name="text" style="width:340px" >
+                          <button class="btn group-item btn-success" type="submit" name="submit" style="width:90px;">Search</button>
+                      </form>
+                  </div>
+
+              </th>
+              <td id="dokha">
+                  <h2> <a href="login" id="login" ><span class="glyphicon glyphicon-log-in"></span> Login</a></h2>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <TABLE>
+                      <tr><td>
+                  <a class="btn btn-primary mx-2 btn-lg " data-toggle="popover" data-placement="bottom" id="tool"  data-html="true"  title="Hi Traders cart.com"><i class="fas fa-shopping-cart"></i> Cart(<span id="cart" >0</span>)</a>
+                  <script>
+                  $(document).ready(function(){
+                  $('[data-toggle="popover"]').popover()
+                  {
+                   content:'opem';
+                   };
+                   });
+
+                   </script>
+                   <style>
+                   .popover
+                    {
+                    color:black;
+                    width:1000px;
+                     }
+
+                    .popover-content
+                    {
+                    background-color:lightblue;
+                    }
+                   </style>
+                      </td>
+                      <td>
+                          <h1 id="staff">{{staff}}</h1>
+                      </td>
+
+                      </tr>
+                  </TABLE>
+              </td>
+
+
+          </tr>
+
+          </tbody>
+
+        </table>
+    </div>
+  </div>
+</nav>
+
+
+
+
+    <div class="table-responsive">
+    <table id="list" class="table table-sm table-hover " >
+        <tbody>
+        <tr  ><td><i class="fas fa-user" style="font-size:90px;"></i> <h3> HELLO <h2 id="uname">{{name}}</h2></h3><br></td>
+            <td><h1 style="font-size:34px;" id="cross">&times;</h1></td>
+        </tr>
+        <tr><td><a class="btn" href=" " ><i class="fas fa-home" style="font-size:30px;color:black;"></i> Home</a>
+        </td></tr>
+        <tr class="table-dark"><td><a class="btn" href="#"> Best Phones</a></td></tr>
+        <tr class="table-dark"><td><a class="btn" href="#"><i class="fas fa-tv" style="font-size:30px;color:black;"></i> Tablets</a></td></tr>
+        <tr class="table-dark"><td><a class="btn" href="#"><i class="fas fa-headphones" style="font-size:30px;color:black;"></i> Ear & Head Phones</a></td></tr>
+        <tr class="table-dark"><td><a class="btn" href="#"><i class="fas fa-tshirt" style="font-size:30px;color:black;"></i> Cloths & Shoes</a></td></tr>
+        <tr class="table-dark"><td><a class="btn" href="#"><i class="fas fa-tools" style="font-size:30px;color:black;"></i>Tools</a></td></tr>
+        <tr><td>
+            <div class="dropdown">
+  <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+    Trader Offers
+  </button>
+  <div class="dropdown-menu ">
+    <a class="dropdown-item" href="#40" >40% off </a>
+    <a class="dropdown-item" href="#70" >70% off</a>
+      <a class="dropdown-item disabled" href="#">{{off}}%s Off</a>
+  </div>
+</div>
+        </td></tr>
+        <tr class="table-primary"><td><a class="btn btn-sm" href="#"><i class="fas fa-sign-in-alt" style="font-size:30px;color:black;"></i> Sign Out</a></td></tr>
+        </tbody>
+    </table>
+</div>
+</header>
+
+
+
+<body>
+
+<!--interface-->
+<div class="container-fluid" bgcolor="white">
+<div class="back"><img src="{%static 'images/yash.jpg'%}" width="100%" height="980px">
+    <div class="container" style="margin-top:-930px;">
+
+
+        <h1 class="container glow" style="font-size:200px;">Well Come To </h1><h1 class="glow" style="font-size:100px;color:blue">Traders.com</h1></div></div>
+           <div class="container-fluid" style="background-color:light;margin-top:20px;border:1px solid blue;">
+               <div class="row" style="background-color:lightyellow;">
+                   <div class="col-sm-4 " style="margin-top:5px">
+                       <div name="service" style="background-color:lightblue;">
+                          <button class="btn btn-info"> <h1>HI {{name}}</h1>
+                              <h4>Recommendation for You</h4></button>
+                           <table border="0"  class="table table-hover" style="background-color:#e5f7f3;text-align:center;text-margin:3" cellspacing="2" cellpadding="4">
+                               <tbody>
+                               <tr>
+                                   <td><img src="{%static 'images/s1.jpg'%}" alt="home" style="border:2px;border-radius:20%;width:90px;height:70px;"><br><h5>Shoes</h5></td>
+                                   <td><img src="{%static 'images/c2.jpg'%}" alt="phone" style="border:2px;border-radius:20%;width:90px;height:70px;"><br><h5>Cloths</h5></td>
+                               </tr>
+                                <tr>
+                                   <td><img src="{%static 'images/p.jpg'%}" alt="home" style="border:2px;border-radius:20%;width:90px;height:70px;"><br><h5>Phones</h5></td>
+                                   <td><img src="{%static 'images/e1.jpg'%}" alt="phone" style="border:2px;border-radius:20%;width:90px;height:70px;"><br><h5>Electronic Appliances</h5></td>
+                               </tr>
+                               </tbody></table></div>
+                   </div>
+                    <!--Images animate script-->
+
+                   <div class="col-sm-4">
+                       <div class="goal" style="border:1px solid blue;margin:5px;background-color:lightblue">
+                           <button class="btn btn-info disabled mx-3" style="margin:10px;font-size:40px;color:red;text-align:center;"><b>Phone Corner</b></button>
+                             <br> <h3 style="margin-top:20px;">
+                                  <table class="table" style=" background-color:#e5f7f3;">
+                                      <tbody>
+                                      <tr><td><img src="{%static 'images/p2.jpg'%}"  style="border:2px;border-radius:5%;width:130px;height:150px;" id="live1" > <br><br><a href="#" style="font-size:11px;"><h4>Show Similar Products</h4></a></td>
+                                          <td><img src="{%static 'images/p3.jpg'%}"  style="border:2px;border-radius:5%;width:130px;height:150px;" ><br><br> </td></tr>
+                                      </tbody>
+                                  </table>
+
+                              </h3>
+                       </div>
+
+                   </div>
+                   <div class="col-sm-3">
+                       <div class="service" style="border:1px solid blue;margin:5px;background-color:lightblue">
+                           <button class="btn btn-info disabled mx-3" style="font-size:40px;color:red;text-align:center;margin:10px;"><b>Fashion</b></button>
+                             <br> <h3 style="margin-top:20px;">
+                                  <table class="table" style=" background-color:#e5f7f3;" >
+                                      <tbody>
+                                      <tr><td><img src="{%static 'images/c3.jpg'%}"  style="border:2px;border-radius:5%;width:130px;height:150px;" id="live2" > <br><br><a href="#" style="font-size:11px;"><h4>Show Similar Products</h4></a></td>
+                                          <td><img src="{%static 'images/c1.jpg'%}"  style="border:2px;border-radius:5%;width:130px;height:150px;" ><br><br></td></tr>
+                                      </tbody>
+                                  </table>
+
+                              </h3>
+
+                       </div>
+                   </div>
+
+               </div>
+
+
+       <!--end-->
+               <style>
+                   .content
+                   {
+                   border:0px solid black;
+margin-top:75px;
+                   }
+                   .content1
+                   {
+                    border:0px solid black;
+margin-top:30px;
+                   }
+
+               </style>
+
+
+<div class="container">
+
+<div>
+
+    <!--jk-->
+<a class="roll-link" href="#"><span data-title="Well-Come U!" href="#" style="font-size:20px">Traders.com</span></a>
+<style>
+
+
+
+/* ROLL LINKS */
+.roll-link {
+    display: inline-block;
+    overflow: hidden;
+
+    vertical-align: top;
+
+    -webkit-perspective: 600px;
+       -moz-perspective: 600px;
+       -ms-perspective: 600px;
+       perspective: 600px;
+
+    -webkit-perspective-origin: 50% 50%;
+       -moz-perspective-origin: 50% 50%;
+       -ms-perspective-origin: 50% 50%;
+       perspective-origin: 50% 50%;
+
+}
+
+.roll-link:hover {text-decoration:none;}
+
+.roll-link span {
+    display: block;
+    position: relative;
+    padding: 0 2px;
+
+    -webkit-transition: all 400ms ease;
+       -moz-transition: all 400ms ease;
+       -ms-transition: all 400ms ease;
+       transition: all 400ms ease;
+
+    -webkit-transform-origin: 50% 0%;
+       -moz-transform-origin: 50% 0%;
+       -ms-transform-origin: 50% 0%;
+       transform-origin: 50% 0%;
+
+    -webkit-transform-style: preserve-3d;
+       -moz-transform-style: preserve-3d;
+       -ms-transform-style: preserve-3d;
+       transform-style: preserve-3d;
+}
+.roll-link:hover span {
+        background: #DD4D42;
+
+
+        -webkit-transform: translate3d( 0px, 0px, -30px ) rotateX( 90deg );
+           -moz-transform: translate3d( 0px, 0px, -30px ) rotateX( 90deg );
+           -ms-transform: translate3d( 0px, 0px, -30px ) rotateX( 90deg );
+           transform: translate3d( 0px, 0px, -30px ) rotateX( 90deg );
+}
+
+.roll-link span:after {
+    content: attr(data-title);
+
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0 2px;
+
+    color: #fff;
+    background: #DD4D42;
+
+    -webkit-transform-origin: 50% 0%;
+       -moz-transform-origin: 50% 0%;
+       -ms-transform-origin: 50% 0%;
+       transform-origin: 50% 0%;
+
+    -webkit-transform: translate3d( 0px, 105%, 0px ) rotateX( -90deg );
+       -moz-transform: translate3d( 0px, 105%, 0px ) rotateX( -90deg );
+       -ms-transform: translate3d( 0px, 105%, 0px ) rotateX( -90deg );
+       transform: translate3d( 0px, 105%, 0px ) rotateX( -90deg );
+}
+</style>
+<!--end-->
+
+
+    <div class="row " style="text-align:center;margin-top:120px">
+
+        <div class="col-sm-4 mx-5 play1" style="border:4px solid blue;height:700px;background-color:lightyellow;">
+            <div class="content">
+            <h2 style="font-size:30px;color:green;">Fashion - Display</h2>
+            <img class=" lock1" src="{% static 'images/c4.jpg'%} " style="width:350px;height:400px">
+            <h3>Our World Wide Selling Fashion Products</h3>
+
+        </div>
+
+            </div>
+
+        <div class="col-sm-4 play2"  style="margin:0px;border:4px solid blue;height:650px;background-color:lightyellow;">
+            <div class="content1" >
+            <h2 style="font-size:30px;color:green;">Phones</h2>
+            <img class=" lock2" src="{% static 'images/p2.jpg'%}" style="width:350px;height:400px">
+            <h3>Most  Selling Phones Products By Our Team</h3>
+
+        </div>
+
+        </div>
+        <div class="col-sm-4 play3" style="margin:0px;border:4px solid blue;height:600px;background-color:lightyellow;">
+            <div class="content2">
+            <h2 style="font-size:30px;color:green;">Electronic Products</h2>
+            <img class=" lock3" src="{% static 'images/e2.jpg'%}" style="width:350px;height:400px">
+            </div>
+        </div>
+        </div>
+</div>
+</div>
+           </div>
+</div>
+    <script>
+
+        $('.lock1').click(function()
+        {
+         $('.play1').animate({height:'20%',width:'100%',left:'20px'});
+       $('.lock1').animate({height:'40%',width:'80%',left:'40px'});
+
+       });
+
+        $('.lock2').click(function()
+        {
+        $('.play2').animate({height:'100%',width:'100%',left:'40px'});
+        $('.lock2').animate({height:'100%',width:'100%',left:'40px'});
+
+        });
+
+        $('.lock3').click(function()
+        {
+
+       $('.play3').animate({height:'100%',width:'100%',left:'60px'});
+$('.lock3').animate({height:'100%',width:'100%',left:'40px'});
+
+        });
+
+    </script>
+
+
+   <!--cateigoreis-->
+{% for j in allprod %}
+       {% for i in j %}
+
+       <div style="margin-top:150px;">
+   <div class="container-fluid" name="Phones" id="phone" style="border:0px solid black;">
+       <div class="table-responsive">
+       <table class="table table-striped bg-light">
+           <tbody>
+           <tr>
+          {% for k in i %}
+
+
+             <th>
+                     <div class="product">
+
+                         <table class="table">
+                       <tbody>
+                       <tr>
+                           <th>
+                       <h1 id="namepr{{k.product_uid}}">Product Name {{k.product_name}}</h1>
+                           </th>
+                       </tr>
+                       <tr>
+                           <td >
+                 <h2>{{k.product_cat}}</h2><span>{{k.product_subcat}}</span>
+                               <span style="margin-left:100px;">Id- #{{k.product_uid}}</span>
+                           </td>
+                       </tr>
+
+                       <tr>
+                           <td>
+                 <img src="{{k.product_img.url}}" style="width:280px;height:400px;">
+                           </td>
+                       </tr>
+                       <tr>
+                           <td>{{k.product_desc}}</td>
+                       </tr>
+                       <tr>
+                           <td><h2>Product Price</h2><h3> ${{k.product_price}}</h3></td>
+                       </tr>
+
+                       <tr>
+                           <td><span id='divpr{{k.product_uid}}' class="divpr"><button class="btn btn-primary btn-lg cart" id='pr{{k.product_uid}}'>Add to CART</button></span>   <button class="btn btn-primary btn-lg">Buy Now</button></td>
+                       </tr>
+
+                       </tbody>
+                   </table>
+
+                     </div>
+
+             </th>
+
+
+
+{% endfor %}
+           </tr>
+           </tbody>
+           </table>
+  </div>
+</div>
+       </div>
+  {% endfor %}
+       {% endfor %}
+
+</div>
+
+
+<!--end cateigories-->
+
+
+
+
+   <div class="container-fluid "style="background-color:#080a52;margin-top:90px">
+<!--accessories-->
+
+       <!--end-->
+
+       <!--categorise shopping corner -->
+       <h1 class="glow">Most Buying Products on Traders</h1>
+
+
+       <!--navigation-->
+<div class="table-responsive" style="margin-top:40px">
+    <table class="table">
+        <tbody>
+          <tr>
+                  <td>
+                      <h1 style="font-size:70px;color:orange"><i class="fas fa-home"></i></h1>
+                  </td>
+                  <td><h1 style="font-size:70px;color:orange"><i class="fas fa-sign-in-alt"></i></h1></td>
+                  <td><h1 style="font-size:70px;color:orange"><i class="fas fa-tv"></i></h1></td>
+                  <td><h1 style="font-size:70px;color:orange"><i class="fas fa-headphones"></i></h1></td>
+                  <td><h1 style="font-size:70px;color:orange"><i class="fas fa-tshirt"></i></h1></td>
+                  <td><h1 style="font-size:70px;color:orange"><i class="fas fa-shoe-prints"></i></h1></td>
+                  <td><h1 style="font-size:70px;color:orange"><i class="fas fa-phone-volume"></i></h1></td>
+                  <td><h1 style="font-size:70px;color:orange"><i class="fas fa-tools"></i></h1></td>
+
+              </tr>
+        </tbody>
+    </table>
+
+</div>
+<!--end -->
+<hr>
+
+
+
+
+
+
+
+
+<!--40% trends-->
+<div class="container-fluid" style="background-color:white;margin-top:90px;margin-bottom:10px">
+    <div > <h1 class="glow" style="font-size:90px;text-align:center;text-shadow:2px 2px black;">Offers %</h1></div>
+    <div class="trend" style="margin-top:50px;">
+                   <h1 class="glow" style="color:red;font-size:40px;text-align:left;text-shadow:1px 1px blue" id="40"> 40% off on different Products </h1>
+          <div class="row" style="margin-top:30px;">
+              <div class="col-sm-3 bg-light">
+<div class="container-fluid">
+
+    <table class="table table-light"><tbody><tr><td>
+        <img src="{%static 'images/c1.jpg'%}" style="width:100%"></td></tr>
+    <tr><td><h5>Perfect fit for family.</h5></td></tr>
+    <tr><td> <h4>Price Rs 700</h4></td></tr>
+    <tr><td> <button class="btn btn-danger "><a href="#" style="text-decoration:none;">Place Order</a> </button>
+                         <button  class="btn btn-danger "><a href="cart" style="text-decoration:none;">Add to Cart</a></button></td></tr>
+    </tbody>
+    </table>
+    </div>
+              </div>
+              <div class="col-sm-3">
+                  <div class="container-fluid">
+                      <table class="table table-light"><tbody><tr><td>
+                          <img src="{%static 'images/e2.jpg'%}" style="width:100%"></td></tr>
+                      <tr><td><h5>.</h5></td></tr>
+                      <tr><td> <h4>Price Rs 930</h4></td></tr>
+                      <tr><td><button class="btn btn-danger" ><a href="#" style="text-decoration:none;">Place Order</a> </button>
+                          <button class="btn btn-danger"><a href="#" style="text-decoration:none;">Add to Cart</a></button></td></tr>
+                      </tbody>
+                      </table>
+              </div>
+              </div>
+              <div class="col-sm-3">
+                  <div class="container-fluid">
+                      <table class="table table-light"><tbody><tr><td>
+                          <img src="{%static 'images/c5.jpg'%}" style="width:100%"></td></tr>
+                      <tr><td><h5></h5></td></tr>
+                      <tr><td> <h4>Price Rs 4000</h4></td></tr>
+                      <tr><td> <button class="btn btn-danger"><a href="#" style="text-decoration:none;">Place Order</a> </button>
+                          <button class="btn btn-danger"><a href="#" style="text-decoration:none;">Add to Cart</a></button></td></tr>
+                      </tbody></table>
+
+                  </div>
+              </div>
+              <div class="col-sm-3">
+                  <div class="container-fluid">
+                      <table class="table bg-light"><tbody><tr><td>
+                          <img src="{%static 'images/p3.jpg'%}" style="width:100%"></td></tr>
+                      <tr><td><h5>16gb, 45000 mAh battery backup.</h5></td></tr>
+                      <tr><td><h4>Price Rs 6400</h4></td></tr>
+                      <tr><td><button class="btn btn-danger"><a href="#" style="text-decoration:none;">Place Order</a> </button>
+                          <button class="btn btn-danger"><a href="#" style="text-decoration:none;">Add to Cart</a></button></td></tr>
+                      </tbody></table>
+              </div>
+              </div>
+          </div>
+
+    </div>
+    <hr>
+
+    <!--70% of
+    <div class="trend" bgcolor="white" style="margin-top:14px;">
+                   <h1 class="glow" style="color:red;font-size:40px;text-align:left" id="70"> 70% off on different Products </h1>
+<div class="row" style="margin-top:30px;">
+              <div class="col-sm-3 bg-light">
+<div class="container-fluid">
+    <table class="table table-light"><tbody><tr><td>
+        <img src="{%static 'images/kangra.jpg'%}" style="width:100%"></td></tr>
+    <tr><td><h5>Kangra is one of The beautiful city.</h5></td></tr>
+    <tr><td> <h4>Price Rs 300</h4></td></tr>
+    <tr><td> <button class="btn btn-danger"><a href="#" style="text-decoration:none;">Place Order </a></button>
+        <button class="btn btn-danger"><a href="#" style="text-decoration:none;">Add to Cart</a></button></td></tr>
+    </tbody>
+    </table>
+</div>
+              </div>
+              <div class="col-sm-3">
+                  <div class="container-fluid">
+                      <table class="table table-light"><tbody><tr><td>
+                          <img src="{%static 'images/kangra.jpg'%}" style="width:100%"></td></tr>
+                      <tr><td><h5>Kangra is one of The beautiful city.</h5></td></tr>
+                      <tr><td> <h4>Price Rs 300</h4></td></tr>
+                      <tr><td><button class="btn btn-danger"><a href="#" style="text-decoration:none;">Place Order</a> </button>
+                          <button class="btn btn-danger"><a href="#" style="text-decoration:none;">Add to Cart</a></button></td></tr>
+                      </tbody>
+                      </table>
+              </div>
+              </div>
+              <div class="col-sm-3">
+                  <div class="container-fluid">
+                      <table class="table table-light"><tbody><tr><td>
+                          <img src="{%static 'images/fab.jpg'%}" style="width:100%"></td></tr>
+                      <tr><td><h5>I am so cute.</h5></td></tr>
+                      <tr><td> <h4>Price Rs infinity</h4></td></tr>
+                      <tr><td> <button class="btn btn-danger"><a href="#" style="text-decoration:none;">Place Order</a> </button>
+                          <button class="btn btn-danger"><a href="#" style="text-decoration:none;">Add to Cart</a></button></td></tr>
+                      </tbody></table>
+
+                  </div>
+              </div>
+              <div class="col-sm-3">
+                  <div class="container-fluid">
+                      <table class="table bg-light"><tbody><tr><td>
+                          <img src="{%static 'images/bg.jpg'%}" style="width:100%"></td></tr>
+                      <tr><td><h5>Kher Ganga.</h5></td></tr>
+                      <tr><td><h4>Price Rs 1000</h4></td></tr>
+                      <tr><td><button class="btn btn-danger"><a href="#" style="text-decoration:none;">Place Order</a> </button>
+                          <button class="btn btn-danger"><a href="#" style="text-decoration:none;">Add to Cart</a></button></td></tr>
+                      </tbody></table>
+              </div>
+              </div>
+</div>
+</div>
+-->
+
+<!--end trend-->
+
+
+           </div>
+
+       </div>
+
+</body>
+
+
+
+
+<footer>
+
+<div class="container-fluid">
+    <div style="height:40px;background-color:black;border-radius:5px;border:2px;opacity:0.7;">
+        <h1 align="center"><a  href="#top" target="_self">Back to top</a></h1>
+
+    </div>
+<div style="background-color:black;border-radius:5px;border:2px;">
+    <marquee ><h1 class="glow">Thank You for Shopping with us.Visit Again & get Your reward's on next visit.</h1>
+    </marquee>
+</div>
+</div>
+
+
+
+
+</footer>
+</html>
+
+{% block js %}
+<script>
+var war=document.getElementById('uname').innerHTML;
+if(war!="")
+{
+document.getElementById('dokha').innerHTML="<h5 style='color:yellow'>  "+war+"</h5>";
+//console.log("school Time gone");
+}
+
+
+var fun=document.getElementById('staff').innerHTML;
+var fun1=parseInt(fun);
+if(fun1==1)
+  {
+  document.getElementById('staff').innerHTML="Staff Status <button type='text' class='btn btn-success' name='status'><i class='fa fa-user'></button>";
+ // document.getElementById('dokha').innerHTML="Bohot Hard";
+  }
+else
+{
+  document.getElementById('staff').innerHTML="Staff Status <button type='text' class='btn btn-danger' name='status'><i class='fa fa-user'></button>";
+ //document.getElementById('dokha').innerHTML="Bohot Hard";
+}
+
+
+    console.log("working");
+
+    if(localStorage.getItem('cart')==null)
+    {
+    var cart={};
+    //console.log("Cart is created");
+    }
+   else
+      {
+       cart=JSON.parse(localStorage.getItem('cart'));
+
+      document.getElementById('cart').innerHTML=Object.keys(cart).length;
+    updateCart(cart);
+       }
+//$('.divpr').on('click','button.cart',function()
+
+$('.cart').click(function()
+{
+var ref=this.id.toString();
+//console.log(ref);
+
+if(cart[ref]!=undefined)
+{
+cart[ref]=cart[ref]+1;
+}
+else
+{cart[ref]=1;}
+
+//console.log(cart);
+
+localStorage.setItem('cart',JSON.stringify(cart));
+updateCart(cart);
+//document.getElementById('cart').innerHTML=Object.keys(cart).length;
+});
+
+
+
+
+
+
+function updateCart(cart)
+{
+document.getElementById('cart').innerHTML=Object.keys(cart).length;
+
+for (var item in cart)
+{
+
+document.getElementById('div'+item).innerHTML="<button id='minus"+item+"' class='btn btn-primary minus' >-</button><span id='val"+item+"'>"+cart[item]+"</span><button id='plus"+item+"' class='btn btn-primary plus'>+</button>";
+
+}
+$('.plus').click(function(){
+cart=JSON.parse(localStorage.getItem('cart'));
+//console.log("cart is back here add item ");
+//console.log(cart);
+var pul=this.id.toString();
+
+var res=pul.slice(4);
+//console.log(pul);
+//console.log(res);
+
+cart[res]=cart[res]+1;
+console.log(cart);
+localStorage.setItem('cart',JSON.stringify(cart));
+document.getElementById('val'+res).innerHTML=cart[res];
+
+updatePopover(cart);
+});
+
+
+//console.log(cart);
+
+
+
+$('.minus').click(function(){
+cart=JSON.parse(localStorage.getItem('cart'));
+//console.log("cart is back here remove item ");
+console.log(cart);
+var pul1=this.id.toString();
+
+var res1=pul1.slice(5);
+console.log(pul1);
+console.log(res1);
+if(cart[res1]>0)
+{
+cart[res1]=cart[res1]-1;
+console.log(cart);
+}
+else
+{
+//pta ni kya chal raha bus zero item na show ho isliye ye krna pdhega
+ document.getElementById('div'+res1).innerHTML='<button class="btn btn-primary btn-lg cart" id="'+res1+' ">Add to CART</button>';
+console.log("we had a long time together");
+console.log(cart);
+}
+
+localStorage.setItem('cart',JSON.stringify(cart));
+document.getElementById('val'+res1).innerHTML=cart[res1];
+updatePopover(cart);
+});
+updatePopover(cart);
+}
+
+// Update popover
+
+$('#tool').popover();
+updatePopover(cart);
+function updatePopover(cart)
+{
+console.log(cart);
+popstr="";
+popstr=popstr+"<h2>Well-Come to My cart</h2>";
+var i=1;
+for(var item in cart)
+{
+popstr=popstr+"<b>"+i+".  </b>";
+var d=document.getElementById('name'+item).innerHTML;
+popstr=popstr+d+'<br>'+"Qty: "+cart[item]+'<br>';
+i=i+1;
+}
+popstr=popstr+ "</div> <a href='#' class='btn btn-primary btn-lg clear' id='clear' onclick='myfunc()' >Clear Cart</a>    <a href='gold/cart' class='btn btn-primary btn-lg' id='Check Out'>Check Out</a>";
+
+document.getElementById("tool").setAttribute('data-content',popstr);
+
+ $("tool").popover('show');
+
+// use to clear cart from cart
+function myfunc()
+{
+console.log("clicked button");
+}
+//end here
+
+
+
+$(".clear").click(function(){
+cart=JSON.parse(localStorage.getItem('cart'));
+for (var item in cart)
+{
+//console.log(item);
+ document.getElementById('div'+item).innerHTML='<button class="btn btn-primary btn-lg cart" id="'+item+' ">Add to CART</button>';
+}
+localStorage.clear();
+cart={};
+updateCart(cart);
+console.log("clicked button");
+});
+
+
+
+}
+
+
+
+
+</script>
+{% endblock %}

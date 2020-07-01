@@ -1,0 +1,60 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Traders Sign-In</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'css\login.css'%}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+ <!--<div class=container"><img  src="{%static 'images/website.png'%}" width="90" height="85" ><h1><u>Traders</u></h1></div>-->
+<div class="container-fluid ">
+<div class="container my-2 pt-2 border bg-dark">
+
+    <div class="container "><img  src="{%static 'images/website.png'%}" width="90" height="85" ><h1 id="klol"  style="color:white;text-shadow:4px 2px 3px blue;text-align:left" ><u>Traders</u></h1>
+        <div class="text" style="text-align:right;color:red;text-shadow:1px 3px black;" class="glow" ><h4><b><i>WELL-COME TO THE BIGGEST SHOPPING SITE</i></b></h4></div>
+
+        <div class="container  my-5 border bg-light">
+          <div class="row border ">
+            <div class="col-sm-6 justify-content-center">
+                {% if messages %}
+{% for message in messages %}
+<div>
+    <h6 STYLE="color:red;">{{message}}</h6>
+</div>
+{% endfor %}
+{% endif %}
+            <form action="gold" method="get">
+                {% csrf_token %}
+           <h2>Sign</h2>
+           <h4>Username</h4>
+            <input type="text" id="open" name="user" class="btn btn-outline-primary"> <br><br>
+                <h4>Password</h4>
+             <input type="password" name="password" class="btn btn-outline-primary"><br><br>
+             <input type="submit" value="Submit" class="btn btn-success">
+                <br>
+                <a href="#">Forget your Password</a>
+        </form>
+
+            </div>
+            <div class="col-sm-6 my-2 ">
+
+        <h5>New to Amazon ?</h5>
+                <button onclick="location.href='{% url 'sign'%}'">Create Your Account</button></div>
+            <div ><h5 >I Build This for Education Purpose.<br> Our moto is <abbr title="Sell Good & Buy Good ">S&B </abbr> </h5></div>
+        </div>
+
+
+    </div>
+
+</div>
+</div>
+
+</div>
+</body>
+</html>
