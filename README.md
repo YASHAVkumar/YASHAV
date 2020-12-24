@@ -5,7 +5,7 @@
   <p>
     #html,#django,#css,#bootstrap,#javascript.
   </p>
-  
+  <img src="capture.PNG" alt="trader's.com"/>
   </div>
   
   
