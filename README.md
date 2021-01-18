@@ -1,6 +1,6 @@
 <div >
   <h>Trader's.com </h1>
-  <p>My first E-commerce wesite </p>
+  <p>My first E-commerce website </p>
   <p>Language And Tools </p>
   <p>
     #html,#django,#css,#bootstrap,#javascript.
